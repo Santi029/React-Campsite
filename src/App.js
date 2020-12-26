@@ -5,6 +5,12 @@ import './App.css';
 import { CAMPSITES } from './shared/campsites';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            campsites: CAMPSITES
+        };
+    }
     render() {
         return (
             <div className="App">
