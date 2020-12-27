@@ -36,7 +36,7 @@ class Directory extends Component {
                         <CardImg width="100%" src={campsite.image} alt={campsite.name} />
                         <CardImgOverlay>
                             <CardTitle>{campsite.name}</CardTitle>
-                        </CardImgOverlay> 
+                        </CardImgOverlay>
                     </Card>
                 </div>
             );
