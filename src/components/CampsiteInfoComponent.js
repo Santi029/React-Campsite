@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
@@ -31,10 +30,10 @@ class CampsiteInfo extends Component {
                             )
                         })
                     }
-               </div>//col//
-            )//return//
-        }//if//
-    }//render//
+               </div>
+            )
+        }
+    }
     render(){
         if(this.props.campsite){
             return (
