@@ -1,5 +1,7 @@
+// eslint-disable-next-line
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+
 class CampsiteInfo extends Component {
     renderCampsite(campsite){
         return(
@@ -45,3 +47,4 @@ class CampsiteInfo extends Component {
         return <div/>;    
     }
 }
+export default CampsiteInfo;
