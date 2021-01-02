@@ -3,6 +3,8 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import Directory from './DirectoryComponents';
 import CampsiteInfo from './CampsiteInfoComponent.js';
 import { CAMPSITES } from '../shared/campsites';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import About from './AboutComponent.js'
 
 class Main extends Component {
@@ -20,13 +22,10 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Navbar dark color="primary">
-                <div className="container">
-                    <NavbarBrand href="/">NuCamp</NavbarBrand>
-                </div>
-                </Navbar>
-                <Directory campsites={this.state.campsites} onClick={campsiteId => this.onCampsiteSelect(campsiteId)}/>
-                <CampsiteInfo campsite = {this.state.campsites.filter(campsite => campsite.id === this.state.selectedCampsite)[0]}/> 
+                <Header />
+                <Directory campsites={this.state.campsites} onClick={campsiteId => this.onCampsiteSelect(campsiteId)} />
+                <CampsiteInfo campsite={this.state.campsites.filter(campsite => campsite.id === this.state.selectedCampsite)[0]} />
+                <Footer />
             </div>
         );
     }
