@@ -41,7 +41,7 @@ function CampsiteInfo(props){
             <div className="container">
                 <div className="row">
                     {RenderCampsite(props.campsite)}
-                    {RenderComments(props.campsite.comments)}       
+                    {RenderComments(props.comments)}       
                 </div>
             </div>
         );
