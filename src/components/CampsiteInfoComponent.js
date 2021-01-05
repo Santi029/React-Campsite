@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -38,6 +38,7 @@ function RenderComments({comments}) {
     }//if//
     return<div/>;
 }
+
 function CampsiteInfo(props){
     if(props.campsite){
         return (
@@ -61,11 +62,5 @@ function CampsiteInfo(props){
     }
     return <div/>;    
 }
- 
-    
-        
-
-
-
 
 export default CampsiteInfo;
