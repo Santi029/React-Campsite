@@ -36,6 +36,44 @@ class Contact extends Component{
         })
     }
 
+    validate(firstName, lastName, phoneNum, email){
+        const errors = {
+            firstName: '',
+            lastName: '',
+            phoneNum: '',
+            email: ''
+        };
+        if (this.state.touched.firstName){
+            if(firstName.length < 2) {
+                errors.firstName = 'First name must be at least 2 charracters.';
+            } else if (firstName.length > 15){
+                errors.firstName = 'First name mush be 15 or less characters';
+            }
+        }
+        if (this.state.touched.lasttName){
+            if(lastName.length < 2) {
+                errors.lastName = 'Last name must be at least 2 charracters.';
+            } else if (lastName.length > 15){
+                errors.lastName = 'Last name mush be 15 or less characters';
+            }
+        }
+        const reg = /^\d+$/;
+        if (this.state.touched.phoneNum && !reg.test(phoneNum)) {
+            errors.phoneNum = 'The phone number should contain only numbers.';
+        }
+
+        if (this.state.touched.email && !email.includes('@')) {
+            errors.email = 'Email should contain a @';
+        }
+        return errors;
+    }
+
+    handleBlur = (field) => () => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        })
+    }
+
     handleSubmit(event) {
         console.log("Current state is " + JSON.stringify(this.state));
         alert("Current state is: " + JSON.stringify(this.state));
@@ -82,6 +120,7 @@ class Contact extends Component{
                                     <Input type="text" id="firstName" name="firstName"
                                         placeholder="First Name"
                                         value={this.state.firstName}
+                                        onBlur={this.handleBlur("firstName")}
                                         onChange={this.handleInputChange} />
                                 </Col>
                             </FormGroup>
@@ -91,6 +130,7 @@ class Contact extends Component{
                                     <Input type="text" id="lastName" name="lastName"
                                         placeholder="Last Name"
                                         value={this.state.lastName}
+                                        onBlur={this.handleBlur("lastName")}
                                         onChange={this.handleInputChange} />
                                 </Col>                        
                             </FormGroup>
@@ -100,6 +140,7 @@ class Contact extends Component{
                                     <Input type="tel" id="phoneNum" name="phoneNum"
                                         placeholder="Phone number"
                                         value={this.state.phoneNum}
+                                        onBlur={this.handleBlur("phoneNum")}
                                         onChange={this.handleInputChange} />
                                 </Col>
                             </FormGroup>
@@ -109,6 +150,7 @@ class Contact extends Component{
                                     <Input type="email" id="email" name="email"
                                         placeholder="Email"
                                         value={this.state.email}
+                                        onBlur={this.handleBlur("email")}
                                         onChange={this.handleInputChange} />
                                 </Col>
                             </FormGroup>
