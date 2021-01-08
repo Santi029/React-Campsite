@@ -40,7 +40,7 @@ class Contact extends Component{
         console.log("Current state is " + JSON.stringify(this.state));
         alert("Current state is: " + JSON.stringify(this.state));
         event.preventDefault();
-    }
+    }  
 
     render() {
         return (
