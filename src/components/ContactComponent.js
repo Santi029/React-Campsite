@@ -81,6 +81,10 @@ class Contact extends Component{
     }  
 
     render() {
+
+        const errors = this.validate(this.state.firstName, this.state.lastName, this.state.phoneNum, this.state.email); 
+
+
         return (
             <div className="container">
                 <div className="row">
@@ -120,8 +124,10 @@ class Contact extends Component{
                                     <Input type="text" id="firstName" name="firstName"
                                         placeholder="First Name"
                                         value={this.state.firstName}
+                                        invalid={errors.firstName}
                                         onBlur={this.handleBlur("firstName")}
                                         onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.firstName}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -130,8 +136,10 @@ class Contact extends Component{
                                     <Input type="text" id="lastName" name="lastName"
                                         placeholder="Last Name"
                                         value={this.state.lastName}
+                                        invalid={errors.lastName}
                                         onBlur={this.handleBlur("lastName")}
                                         onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.lastName}</FormFeedback>
                                 </Col>                        
                             </FormGroup>
                             <FormGroup row>
@@ -140,8 +148,11 @@ class Contact extends Component{
                                     <Input type="tel" id="phoneNum" name="phoneNum"
                                         placeholder="Phone number"
                                         value={this.state.phoneNum}
+                                        invalid={errors.phoneNum}
                                         onBlur={this.handleBlur("phoneNum")}
                                         onChange={this.handleInputChange} />
+                                        invalid={errors.phoneNum}
+                                        <FormFeedback>{errors.phoneNum}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -150,8 +161,11 @@ class Contact extends Component{
                                     <Input type="email" id="email" name="email"
                                         placeholder="Email"
                                         value={this.state.email}
+                                        invalid={errors.email}
                                         onBlur={this.handleBlur("email")}
                                         onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.email}</FormFeedback>
+
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
