@@ -7,6 +7,13 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Button,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  ModalHeader,
+  Modal,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -18,9 +25,9 @@ class CommentForm extends Component {
         isModalOpen: false
       };
 
-    this.toggleModal = this.toggleModal.blind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
-  
+
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen
@@ -30,30 +37,28 @@ class CommentForm extends Component {
   render() {
     return (
       <React.Fragment>
-          <Button className="fa fa-lg fa-pencil" outline> Submit Comment</Button>
+          <Button className="fa fa-lg fa-pencil" outline onClick={this.toggleModal}> Submit Comment</Button>
           <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-            <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+            <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
             <ModalBody>
-              <Form onSubmit={this.handleLogin}>
-                <FormGroup>
-                  <Label htmlFor="username">Username</Label>
-                  <Input type="text" id="username" name="username"
+            <Form onSubmit={this.handleLogin}>
+              <FormGroup>
+                <Label htmlFor="username">Username</Label>
+                <Input type="text" id="username" name="username"
                     innerRef={input => this.username = input} />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Password</Label>
-                  <Input type="password" id="password" name="password"
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="password">Password</Label>
+                <Input type="password" id="password" name="password"
                     innerRef={input => this.password = input} />
-                </FormGroup>
-                <FormGroup check>
-                  <Label check>
-                    <Input type="checkbox" name="remember"
-                      innerRef={input => this.remember = input} />
-                        Remember me
-                  </Label>
-                </FormGroup>
-                <Button type="submit" value="submit" color="primary">Login</Button>
-              </Form>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="remember"
+                    innerRef={input => this.remember = input} />
+                  Remember me
+                </Label>
+              </FormGroup>
             </ModalBody>
           </Modal>
       </React.Fragment>
