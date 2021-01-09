@@ -12,18 +12,7 @@ import { COMMENTS } from '../shared/comments';
 import { PARTNERS } from '../shared/partners';
 import { PROMOTIONS } from '../shared/promotions';
 
-
 class Main extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            campsites: CAMPSITES,
-            comments: COMMENTS,
-            partners: PARTNERS,
-            promotions: PROMOTIONS
-        };
-    }
-
   render() {
       const HomePage = () => {
           return(
