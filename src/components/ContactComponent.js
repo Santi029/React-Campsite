@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem,
-    Button, Label, Input, Col, Row } from 'reactstrap';
+    Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm } from 'react-redux-form';
 
@@ -83,7 +84,7 @@ class Contact extends Component{
                                         placeholder="Last Name"
                                         className="form-control"
                                     />
-                                </Col>                        
+                                </Col>
                             </Row>
                             <Row className="form-group">
                                 <Label htmlFor="phoneNum" md={2}>Phone</Label>
@@ -118,11 +119,10 @@ class Contact extends Component{
                                 </Col>
                                 <Col md={4}>
                                     <Control.select model=".contactType" name="contactType"
-                                            value={this.state.contactType}
-                                            onChange={this.handleInputChange}>
-                                            <option>By Phone</option>
-                                            <option>By Email</option>
-                                    />
+                                        className="form-control">
+                                        <option>By Phone</option>
+                                        <option>By Email</option>
+                                    </Control.select>
                                 </Col>
                             </Row>
                             <Row className="form-group">
