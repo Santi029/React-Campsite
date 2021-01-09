@@ -20,6 +20,7 @@ class CommentForm extends Component {
 
     this.toggleModal = this.toggleModal.blind(this);
   }
+  
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen
@@ -55,7 +56,7 @@ class CommentForm extends Component {
               </Form>
             </ModalBody>
           </Modal>
-        </React.Fragment>
+      </React.Fragment>
     );
   }
 }
