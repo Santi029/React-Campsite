@@ -7,6 +7,11 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Button,
+  ButtonGroup,
+  ButtonDropdown,
+  DropdownMenu,
+  DropdownItem,
+  DropdownToggle,
   ModalBody,
   Form,
   FormGroup,
@@ -16,6 +21,8 @@ import {
   Modal,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import InputGroupButtonDropdown from "reactstrap/lib/InputGroupButtonDropdown";
+import InputGroup from "reactstrap/lib/InputGroup";
 
 class CommentForm extends Component {
 
@@ -43,20 +50,32 @@ class CommentForm extends Component {
             <ModalBody>
               <Form onSubmit={this.handleLogin}>
               <FormGroup>
-                <Label htmlFor="username">Username</Label>
+                <ButtonGroup>
+                  <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                    <DropdownToggle caret>
+                      Rating
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem>1 Star</DropdownItem>
+                      <DropdownItem>2 Star</DropdownItem>
+                      <DropdownItem>3 Star</DropdownItem>
+                      <DropdownItem>4 Star</DropdownItem>
+                      <DropdownItem>5 Star</DropdownItem>
+                    </DropdownMenu>
+                  </ButtonDropdown>
+                </ButtonGroup>
+                {/* <Label htmlFor="username">Rating</Label>
                 <Input type="text" id="username" name="username"
-                    innerRef={input => this.username = input} />
+                    innerRef={input => this.username = input} /> */}
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="password">Password</Label>
-                <Input type="password" id="password" name="password"
+                <Label htmlFor="author">Author</Label>
+                <Input type="text" id="text" name="text"
                     innerRef={input => this.password = input} />
               </FormGroup>
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" name="remember"
-                    innerRef={input => this.remember = input} />
-                  Remember me
+                  <Button innerRef={input => this.remember = input} onClick /> Submit
                 </Label>
               </FormGroup>
             </Form>
@@ -102,9 +121,9 @@ function RenderComments({ comments }) {
           );
         })}
         <CommentForm />
-      </div> //col//
-    ); //return//
-  } //if//
+      </div>
+    );
+  }
   return <div />;
 }
 
