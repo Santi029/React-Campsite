@@ -7,11 +7,6 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Button,
-  ButtonGroup,
-  ButtonDropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
   ModalBody,
   Form,
   FormGroup,
@@ -21,8 +16,6 @@ import {
   Modal,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import InputGroupButtonDropdown from "reactstrap/lib/InputGroupButtonDropdown";
-import InputGroup from "reactstrap/lib/InputGroup";
 
 class CommentForm extends Component {
 
@@ -48,37 +41,29 @@ class CommentForm extends Component {
           <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
             <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
             <ModalBody>
-              <Form onSubmit={this.handleLogin}>
-              <FormGroup>
-                <ButtonGroup>
-                  <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                    <DropdownToggle caret>
-                      Rating
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>1 Star</DropdownItem>
-                      <DropdownItem>2 Star</DropdownItem>
-                      <DropdownItem>3 Star</DropdownItem>
-                      <DropdownItem>4 Star</DropdownItem>
-                      <DropdownItem>5 Star</DropdownItem>
-                    </DropdownMenu>
-                  </ButtonDropdown>
-                </ButtonGroup>
-                {/* <Label htmlFor="username">Rating</Label>
-                <Input type="text" id="username" name="username"
-                    innerRef={input => this.username = input} /> */}
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="author">Author</Label>
-                <Input type="text" id="text" name="text"
-                    innerRef={input => this.password = input} />
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Button innerRef={input => this.remember = input} onClick /> Submit
-                </Label>
-              </FormGroup>
-            </Form>
+              <Form onSubmit={this.tootleModal}>
+                                
+                <FormGroup>
+                  <Label for="Control.select">Rating</Label>
+                  <Input type="select" name="select" id="rating-selected">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Input>
+                </FormGroup>
+                <FormGroup>
+                  <Label for=".Control.text">Author</Label>
+                  <Input type="text" name="text" id="author" />
+                </FormGroup>
+                <FormGroup>
+                  <Label for=".Control.text">Comments</Label>
+                  <Input type="textarea" rows="6" name="text" id="comment" />
+                </FormGroup>
+                <br/>
+                <Button type="submit" value="submit" color="primary" onClick={CampsiteComment()}>Submit</Button>
+              </Form>
             </ModalBody>
           </Modal>
       </React.Fragment>
@@ -86,6 +71,9 @@ class CommentForm extends Component {
   }
 }
 
+function CampsiteComment(submit) {
+  alert("rating", "author", "comment");
+}
 
 function RenderCampsite({ campsite }) {
   return (
