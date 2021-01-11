@@ -86,21 +86,16 @@ function CampsiteInfo(props) {
 class CommentForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      author: '',
-      agree: false,
-      isModalOpen: false,
-      touched: {
-          author: false
-      },
-    };
-    this.toggleModal = this.toggleModal.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // this.state = {
-    //   isModalOpen: false,
-    // };
-    // this.handleSubmit = this.handleSubmit.bind(this);
+      this.state = {
+        author: '',
+        agree: false,
+        isModalOpen: false,
+        touched: {
+            author: false
+        },
+      };
+      this.toggleModal = this.toggleModal.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggleModal = () => {
