@@ -12,7 +12,9 @@ import {
   ModalHeader,
   Modal,
 } from "reactstrap";
+
 import { Link } from "react-router-dom";
+
 import { Control, LocalForm, Errors } from "react-redux-form";
 
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -90,11 +92,9 @@ class CommentForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  }
+  toggleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen,});
+  };
 
   handleSubmit(values) {
     console.log("Your info is" + JSON.stringify(values));
@@ -107,7 +107,7 @@ class CommentForm extends Component {
         <Button
           className="fa fa-lg fa-pencil"
           outline
-          color="danger"
+          color="primary"
           onClick={this.toggleModal}
         >
           Submit Comment
@@ -117,7 +117,7 @@ class CommentForm extends Component {
           <ModalBody dalBody>
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Label htmlFor="rating">Rating</Label>
-              <Control.select
+              <Control.Select
                 model=".rating"
                 name="rating"
                 id="rating"
@@ -128,9 +128,9 @@ class CommentForm extends Component {
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-              </Control.select>
+              </Control.Select>
               <Label htmlFor="author">Author</Label>
-              <Control.text
+              <Control.Text
                 model=".author"
                 name="author"
                 id="author"
@@ -141,7 +141,6 @@ class CommentForm extends Component {
                   maxLength: maxLength(15),
                 }}
               />
-
               <Errors
                 className="text-danger"
                 model=".author"
@@ -153,7 +152,7 @@ class CommentForm extends Component {
                 }}
               />
               <Label htmlFor="Comment">Comments</Label>
-              <Control.textarea
+              <Control.Textarea
                 rows="6"
                 model=".text"
                 id="text"
