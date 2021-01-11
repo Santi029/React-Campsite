@@ -161,7 +161,6 @@ class CommentForm extends Component {
                 placeholder="comment"
                 className="form-control"
               />
-              <br />
               <Button type="submit" color="primary">
                 Send Feedback
               </Button>
@@ -174,30 +173,3 @@ class CommentForm extends Component {
 }
 
 export default CampsiteInfo;
-
-// function RenderComments({ comments }) {
-//   if (comments) {
-//     return (
-//       <div className="col-md-5 m-1">
-//         <h4>Comments</h4>
-//             {comments.map((comment) => {
-//           return (
-//             <div>
-//               <p>{comment.text}</p>
-//               <p>
-//                 {comment.author}{" "}
-//                 {new Intl.DateTimeFormat("en-US", {
-//                   year: "numeric",
-//                   month: "short",
-//                   day: "2-digit",
-//                 }).format(new Date(Date.parse(comment.date)))}
-//               </p>
-//             </div>
-//           );
-//         })}
-//         <CommentForm />
-//       </div>
-//     );
-//   }
-//   return <div />;
-// }
