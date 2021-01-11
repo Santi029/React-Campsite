@@ -33,7 +33,7 @@ class CommentForm extends Component {
       isModalOpen: !this.state.isModalOpen
     });
   }
-    
+
   render() {
     return (
       <React.Fragment>
