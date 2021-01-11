@@ -10,7 +10,7 @@ import {
   ModalBody,
   Label,
   ModalHeader,
-  Modal
+  Modal,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
@@ -18,7 +18,6 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 const maxLength = (len) => (val) => !val || val.length <= len;
 
 const minLength = (len) => (val) => val && val.length >= len;
-
 
 function RenderCampsite({ campsite }) {
   return (
@@ -38,21 +37,18 @@ function RenderComments({ comments }) {
     return (
       <div className="col-md-5 m-1">
         <h4>Comments</h4>
-            {comments.map((comment) => {
-          return (
-            <div>
-              <p>{comment.text}</p>
-              <p>
-                {comment.author}{" "}
-                {new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "2-digit",
-                }).format(new Date(Date.parse(comment.date)))}
-              </p>
-            </div>
-          );
-        })}
+        {comments.map((comment) => (
+          <div key={comment.id}>
+            {comment.text},
+            <br />
+            --{comment.author}
+            {new Intl.DateTimeFormat("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "2-digit",
+            }).format(new Date(Date.parse(comment.date)))}
+          </div>
+        ))}
         <CommentForm />
       </div>
     );
@@ -88,71 +84,120 @@ function CampsiteInfo(props) {
 class CommentForm extends Component {
   constructor(props) {
     super(props);
-      this.state= {
-        isModalOpen: false
-      };
+    this.state = {
+      isModalOpen: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggleModal() {
     this.setState({
-      isModalOpen: !this.state.isModalOpen
+      isModalOpen: !this.state.isModalOpen,
     });
   }
 
   handleSubmit(values) {
     console.log("Your info is" + JSON.stringify(values));
-    alert("Your info is " + JSON.stringify(values))
+    alert("Your info is " + JSON.stringify(values));
   }
-    
+
   render() {
     return (
-      <React.Fragment>
-          <Button className="fa fa-lg fa-pencil" outline onClick={this.toggleModal}> Submit Comment</Button>
-          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-            <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
-            <ModalBody dalBody>
-              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                <Label htmlFor="rating">Rating</Label>
-                  <Control.select model=".rating" name="rating" id="rating" className="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </Control.select>
-                  <Label htmlFor="author">Author</Label>
-                  <Control.text 
-                    model=".author"
-                    name="author"
-                    id="author"
-                    placeholder="your name"
-                    className="form-control"
-                    validators={{ minLength: minLength(2), maxLength: maxLength(15), }} />
+      <div>
+        <Button
+          className="fa fa-lg fa-pencil"
+          outline
+          color="danger"
+          onClick={this.toggleModal}
+        >
+          Submit Comment
+        </Button>
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+          <ModalBody dalBody>
+            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+              <Label htmlFor="rating">Rating</Label>
+              <Control.select
+                model=".rating"
+                name="rating"
+                id="rating"
+                className="form-control"
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Control.select>
+              <Label htmlFor="author">Author</Label>
+              <Control.text
+                model=".author"
+                name="author"
+                id="author"
+                placeholder="your name"
+                className="form-control"
+                validators={{
+                  minLength: minLength(2),
+                  maxLength: maxLength(15),
+                }}
+              />
 
-                  <Errors
-                    className="text-danger"
-                    model=".author"
-                    show="touched"
-                    component="div"
-                    messages={{minLength: "Must be at least 2 characters", maxLength: "Must be 15 characters or less",}}/>
-                  <Label htmlFor="Comment">Comments</Label>
-                  <Control.textarea
-                      rows="6"
-                      model=".text"
-                      id="text"
-                      name="text"
-                      placeholder="comment"
-                      className="form-control"/>
-                  <br/>
-                <Button type="submit" color="primary">Send Feedback</Button>
-              </LocalForm>
-            </ModalBody>
-          </Modal>
-      </React.Fragment>
+              <Errors
+                className="text-danger"
+                model=".author"
+                show="touched"
+                component="div"
+                messages={{
+                  minLength: "Must be at least 2 characters",
+                  maxLength: "Must be 15 characters or less",
+                }}
+              />
+              <Label htmlFor="Comment">Comments</Label>
+              <Control.textarea
+                rows="6"
+                model=".text"
+                id="text"
+                name="text"
+                placeholder="comment"
+                className="form-control"
+              />
+              <br />
+              <Button type="submit" color="primary">
+                Send Feedback
+              </Button>
+            </LocalForm>
+          </ModalBody>
+        </Modal>
+      </div>
     );
   }
 }
 
-
 export default CampsiteInfo;
+
+// function RenderComments({ comments }) {
+//   if (comments) {
+//     return (
+//       <div className="col-md-5 m-1">
+//         <h4>Comments</h4>
+//             {comments.map((comment) => {
+//           return (
+//             <div>
+//               <p>{comment.text}</p>
+//               <p>
+//                 {comment.author}{" "}
+//                 {new Intl.DateTimeFormat("en-US", {
+//                   year: "numeric",
+//                   month: "short",
+//                   day: "2-digit",
+//                 }).format(new Date(Date.parse(comment.date)))}
+//               </p>
+//             </div>
+//           );
+//         })}
+//         <CommentForm />
+//       </div>
+//     );
+//   }
+//   return <div />;
+// }
