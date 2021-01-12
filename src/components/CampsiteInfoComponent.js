@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from "react";
 import {
   Card,
@@ -123,7 +124,7 @@ class CommentForm extends Component {
           <ModalBody dalBody>
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Label htmlFor="rating">Rating</Label>
-              <Control.Select
+              <Control.select
                 model=".rating"
                 name="rating"
                 id="rating"
@@ -134,9 +135,9 @@ class CommentForm extends Component {
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-              </Control.Select>
+              </Control.select>
               <Label htmlFor="author">Author</Label>
-              <Control.Text
+              <Control.text
                 model=".author"
                 name="author"
                 id="author"
@@ -158,7 +159,7 @@ class CommentForm extends Component {
                 }}
               />
               <Label htmlFor="Comment">Comments</Label>
-              <Control.Textarea
+              <Control.textarea
                 rows="6"
                 model=".text"
                 id="text"
