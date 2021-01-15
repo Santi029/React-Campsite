@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Directory from './DirectoryComponents';
+import Directory from './DirectoryComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
-import About from './AboutusComponent';
+import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addComment } from '../redux/ActionCreators';
