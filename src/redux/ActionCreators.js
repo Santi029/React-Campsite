@@ -11,7 +11,7 @@ export const addComment = (campsiteId, rating, author, text) => ({
     }
 })
 
-export const fetchCampsites = () => {
+export const fetchCampsites = () => (dispatch) => {
     dispatch(campsitesLoading());
 
     setTimeout(() => {

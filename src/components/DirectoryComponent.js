@@ -44,7 +44,7 @@ function Directory(props) {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
     return (
