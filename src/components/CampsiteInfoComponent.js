@@ -33,7 +33,7 @@ function RenderCampsite({ campsite }) {
   );
 }
 
-function RenderComments({ comments, addComment, campsiteId }) {
+function RenderComments({ comments, postComment, campsiteId }) {
   if (comments) {
     return (
       <div className="col-md-5 m-1">
@@ -50,7 +50,7 @@ function RenderComments({ comments, addComment, campsiteId }) {
             }).format(new Date(Date.parse(comment.date)))}
           </div>
         ))}
-        <CommentForm campsiteId={campsiteId} addComment={addComment} />
+        <CommentForm campsiteId={campsiteId} postComment={postComment} />
       </div>
     );
   }
@@ -96,9 +96,9 @@ function CampsiteInfo(props) {
         </div>
         <div className="row">
           <RenderCampsite campsite={props.campsite} />
-          <RenderComments 
+          <RenderComments
             comments={props.comments}
-            addComment={props.addComment}
+            postComment={props.postComment}
             campsiteId={props.campsite.Id}
           />
         </div>
@@ -111,25 +111,25 @@ function CampsiteInfo(props) {
 class CommentForm extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-        author: '',
-        agree: false,
-        isModalOpen: false,
-        touched: {
-            author: false
-        },
-      };
-      this.toggleModal = this.toggleModal.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      author: '',
+      agree: false,
+      isModalOpen: false,
+      touched: {
+        author: false
+      },
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggleModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen,});
+    this.setState({ isModalOpen: !this.state.isModalOpen, });
   };
 
   handleSubmit(values) {
     this.toggleModal();
-    this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
+    this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
   }
 
   render() {
