@@ -31,7 +31,7 @@ export const fetchCampsites = () => (dispatch) => {
             }
         )
         .then(response => response.json())
-        .then(campsites => dispatch(addCampsites(campsites)));
+        .then(campsites => dispatch(addCampsites(campsites)))
         .catch (error => dispatch(campsitesFailed(error.message)));
 };
 
@@ -100,7 +100,7 @@ export const fetchPromotions = () => (dispatch) => {
     )
         .then(response => response.json())
         .then(promotions => dispatch(addPromotions(promotions)))
-        .catch(error => dispatch(promotionsFailed(error.message)));
+        .catch(error => dispatch(promotionsFailed(error.message)))
 };
 
 export const promotionsLoading = () => ({
