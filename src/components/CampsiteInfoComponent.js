@@ -148,7 +148,7 @@ class CommentForm extends Component {
           <ModalBody dalBody>
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Label htmlFor="rating">Rating</Label>
-              <Control.select
+              <Control
                 model=".rating"
                 name="rating"
                 id="rating"
@@ -159,9 +159,9 @@ class CommentForm extends Component {
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-              </Control.select>
+              </Control>
               <Label htmlFor="author">Author</Label>
-              <Control.text
+              <Control
                 model=".author"
                 name="author"
                 id="author"
@@ -183,7 +183,7 @@ class CommentForm extends Component {
                 }}
               />
               <Label htmlFor="Comment">Comments</Label>
-              <Control.textarea
+              <Control
                 rows="6"
                 model=".text"
                 id="text"
