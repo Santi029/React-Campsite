@@ -74,7 +74,7 @@ export const addComment = comment => ({
     payload: comment
 });
 
-export const postComment = (campsiteId, rating, author, text) => {
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
     const newComment = {
         campsiteId: campsiteId,
         rating: rating,
@@ -103,7 +103,7 @@ export const postComment = (campsiteId, rating, author, text) => {
             error => { throw error; }
         )
         .then(response => response.json())
-        .then(response => dispatch(addComment(response)))
+        .then(response => dispatch(addComments(response)))
         .catch(error => {
             console.log('post comment', error.message);
             alert('Your comment could not be posted\nError: ' + error.message);
