@@ -18,7 +18,7 @@ function RenderCard({ item, isLoading, errMess }) {
                 exitTransform: 'scale(0.5) translateY(50%)'
             }}>
             <Card>
-                <CardImg src={baseUrl + item.image} alt={item.name} />
+                {/* <CardImg src={baseUrl + item.image} alt={item.name} /> */}
                 <CardBody>
                     <CardTitle>{item.name}</CardTitle>
                     <CardText>{item.description}</CardText>
